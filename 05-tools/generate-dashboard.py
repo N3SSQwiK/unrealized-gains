@@ -398,7 +398,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   --type-opportunity: #c9a84c;
   --type-team-call: #64748b;
   --type-email: #22d3ee;
-  --type-escalation: #f87171;
+  --type-escalation: #f59e0b;
   --type-info: #64748b;
 }
 
@@ -430,7 +430,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   --type-opportunity: #96792a;
   --type-team-call: #4b5563;
   --type-email: #0e7490;
-  --type-escalation: #dc2626;
+  --type-escalation: #d97706;
   --type-info: #6b7280;
 }
 
@@ -528,27 +528,34 @@ body {
   background: transparent;
   border: 1px solid var(--border-strong);
   color: var(--text-secondary);
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 18px;
   transition: all .3s;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  line-height: 1;
 }
 .theme-toggle:hover {
   border-color: var(--accent-gold);
   color: var(--accent-gold);
   box-shadow: 0 0 16px var(--accent-gold-dim);
+  transform: rotate(15deg);
 }
 [data-theme="light"] .theme-toggle:hover {
   border-color: #002d72;
   color: #002d72;
   box-shadow: 0 0 16px rgba(0,45,114,.1);
 }
+/* Sun icon in dark mode, moon in light */
+.theme-toggle .icon-sun { display: inline; }
+.theme-toggle .icon-moon { display: none; }
+[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+[data-theme="light"] .theme-toggle .icon-moon { display: inline; }
 
 /* ===== Grid ===== */
 .grid { display: grid; gap: 16px; margin-bottom: 20px; }
@@ -645,8 +652,8 @@ body {
 .metric.ok .glow { background: radial-gradient(ellipse at center, rgba(74,222,128,.06) 0%, transparent 70%); }
 .metric.warn .value { color: var(--accent-yellow); }
 .metric.warn .glow { background: radial-gradient(ellipse at center, rgba(251,191,36,.06) 0%, transparent 70%); }
-.metric.alert .value { color: var(--accent-red); }
-.metric.alert .glow { background: radial-gradient(ellipse at center, rgba(248,113,113,.06) 0%, transparent 70%); }
+.metric.alert .value { color: var(--accent-gold); }
+.metric.alert .glow { background: radial-gradient(ellipse at center, rgba(201,168,76,.08) 0%, transparent 70%); }
 .metric.neutral .value { color: var(--text-primary); }
 
 /* ===== Section Headers ===== */
@@ -687,7 +694,7 @@ body {
 .badge-opportunity { background: var(--accent-gold-dim); color: var(--accent-gold); }
 .badge-team-call { background: rgba(100,116,139,.15); color: var(--type-team-call); }
 .badge-email { background: rgba(34,211,238,.15); color: var(--type-email); }
-.badge-escalation { background: rgba(248,113,113,.15); color: var(--type-escalation); }
+.badge-escalation { background: rgba(245,158,11,.15); color: var(--type-escalation); }
 .badge-info { background: rgba(100,116,139,.15); color: var(--type-info); }
 .badge-active { background: rgba(74,222,128,.15); color: var(--accent-green); }
 .badge-on-hold { background: rgba(251,191,36,.15); color: var(--accent-yellow); }
@@ -1062,7 +1069,10 @@ function renderHeader() {
     ),
     h('div', {className: 'header-right'},
       h('span', {className: 'header-meta'}, new Date(DATA.generated_at).toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'})),
-      h('button', {className: 'theme-toggle', onClick: toggleTheme, title: 'Toggle theme (T)'}, 'T')
+      h('button', {className: 'theme-toggle', onClick: toggleTheme, title: 'Toggle theme (T)'},
+        h('span', {className: 'icon-sun'}, '\u2600'),
+        h('span', {className: 'icon-moon'}, '\u263E')
+      )
     )
   );
 }
@@ -1154,8 +1164,9 @@ function renderOpportunities() {
     h('h2', null, 'Opportunities'),
     ...DATA.opportunities.map(o => {
       const dr = o.days_remaining;
-      const cls = dr === null ? 'opp-yellow' : dr > 14 ? 'opp-green' : dr > 7 ? 'opp-yellow' : 'opp-red';
-      const label = dr === null ? 'No window' : dr < 0 ? 'Expired' : dr + 'd remaining';
+      const expired = dr !== null && dr < 0;
+      const cls = dr === null ? 'opp-yellow' : expired ? 'opp-red' : dr > 14 ? 'opp-green' : 'opp-yellow';
+      const label = dr === null ? 'No window' : expired ? 'Past due' : dr + 'd remaining';
       return h('div', {className: 'opp-item'},
         h('span', {className: 'opp-window ' + cls}, label),
         h('div', {className: 'opp-title'}, o.title),
