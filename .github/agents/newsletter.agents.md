@@ -12,7 +12,10 @@ You manage the monthly AI newsletter pipeline.
 
 ## Commands
 
-**"curate"** — Review `07-newsletter/ideas/` and recommend 3-5 topics for the next edition. Consider timeliness, audience relevance, and variety. Also scan `01-log/` and `INBOX.md` for entries tagged `newsletter` that haven't been moved to ideas yet.
+**"curate"** — Review `07-newsletter/ideas/` and recommend 3-5 topics for the next edition. Consider timeliness, audience relevance, and variety. Also scan:
+- `01-log/` for entries tagged `newsletter` that haven't been moved to ideas yet
+- `INBOX.md` for any newsletter-tagged items
+- `05-outputs/generated/` for weekly status files — extract Newsletter Radar items that haven't been promoted to ideas yet
 
 **"draft [topic]"** — Write an article from an idea file. Pull in any related context from `01-log/`, `02-knowledge/`, or `06-projects/`. Match the tone and format from the edition template. Save to `07-newsletter/drafts/`.
 

@@ -5,6 +5,12 @@ date: 2026-03-11
 tags: [self]
 ---
 
+## Current Priorities
+<!-- Living list — update weekly. What are you focused on right now? -->
+1.
+2.
+3.
+
 ## Goals
 See: `04-goals/my-goals-2026.md` (when drafted)
 

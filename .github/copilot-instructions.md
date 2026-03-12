@@ -42,7 +42,7 @@ INBOX.md               Single-file capture scratchpad — always open
 title: "MWF Team Call — Controls Discussion"
 date: 2026-03-11
 tags: [controls, team-sync]
-type: meeting | decision | email | escalation
+type: meeting | decision | email | escalation | 1on1 | opportunity | team-call
 attendees: [names]
 goal: org-goal-slug (if applicable)
 project: project-slug (if applicable)
@@ -69,6 +69,42 @@ last-reviewed: YYYY-MM-DD
 ---
 ```
 
+### 1:1 Log entries
+```yaml
+---
+title: "1:1 with [Name]"
+date: YYYY-MM-DD
+tags: [1on1]
+type: 1on1
+attendees: [names]
+---
+```
+
+Include sections: `## Discussed`, `## Commitments I Made`, `## Commitments They Made`, `## Follow-ups`.
+
+### Opportunity entries
+```yaml
+---
+title: "Opportunity — [Brief description]"
+date: YYYY-MM-DD
+tags: [opportunity]
+type: opportunity
+window: YYYY-MM-DD (when does this close or expire)
+action-required: "[What needs to happen]"
+---
+```
+
+## Capture Paths
+
+Not every capture comes through VS Code. Valid interim capture surfaces:
+
+- **Outlook draft** — jot raw notes during a meeting, paste into INBOX.md later
+- **OneNote** — if already open, capture there and transfer at end of day
+- **Stylus email** — forward emails via Quick Step for structured capture
+- **INBOX.md** — the primary capture point when VS Code is open
+
+The goal is zero lost information. The processing step can wait; the capture cannot.
+
 ## Processing Workflow
 
 When asked to process the inbox:
@@ -86,6 +122,13 @@ When generating outputs (status updates, review prep):
 2. Pull evidence and specifics — no generic summaries
 3. Use the appropriate template from 05-outputs/templates/
 4. Save the result in 05-outputs/generated/
+
+## Degraded Mode
+
+If the inbox hasn't been processed in a while, or if log entries are sparse for a given week:
+- Agents should still produce output — flag gaps explicitly rather than producing nothing
+- Prompt the user with specific questions to fill in what's missing: "I only found 2 log entries this week. What else happened?"
+- Never punish sparse input with silence — partial output with gap flags is always better than no output
 
 ## Tone
 
