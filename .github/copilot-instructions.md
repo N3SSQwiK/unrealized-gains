@@ -17,7 +17,7 @@ INBOX.md               Single-file capture scratchpad — always open
 
 ## Your Role
 
-1. **Process** — Move INBOX.md entries to the right location with proper frontmatter
+1. **Process** — Move raw INBOX.md entries to the right location with proper frontmatter (pre-structured Stylus captures go directly to their destination)
 2. **Connect** — Surface links between log entries, goals, people, and projects
 3. **Recall** — Search across the brain to answer questions with full context
 4. **Produce** — Generate outputs (weekly status, review drafts, briefing docs) from stored material
@@ -96,12 +96,26 @@ action-required: "[What needs to happen]"
 
 ## Capture Paths
 
-Not every capture comes through VS Code. Valid interim capture surfaces:
+The system has two capture tracks:
 
+### Track 1: Raw capture → INBOX.md → process later
+For quick thoughts, meeting brain dumps, and anything captured without structure.
+
+- **INBOX.md** — the primary scratchpad when VS Code is open. No frontmatter, just raw text.
 - **Outlook draft** — jot raw notes during a meeting, paste into INBOX.md later
 - **OneNote** — if already open, capture there and transfer at end of day
-- **Stylus email** — forward emails via Quick Step for structured capture
-- **INBOX.md** — the primary capture point when VS Code is open
+
+INBOX.md requires processing via the `process-inbox` agent, which adds frontmatter and files items to their destination.
+
+### Track 2: Stylus email → direct to destination
+For emails and meeting recaps forwarded through Outlook Quick Step → Stylus LLM.
+
+Stylus output arrives pre-structured with frontmatter. These should be pasted **directly into the appropriate folder** (usually `01-log/`), not into INBOX.md. The file is already structured — running it through inbox processing is redundant.
+
+**Naming convention for direct-filed Stylus output:** `01-log/YYYY-MM-DD-topic-slug.md`
+
+### Track 3: Interim surfaces
+When neither VS Code nor email is available, capture raw in any medium (phone note, Teams self-chat, sticky note). Transfer to INBOX.md at end of day.
 
 The goal is zero lost information. The processing step can wait; the capture cannot.
 
@@ -112,8 +126,10 @@ When asked to process the inbox:
 2. For each entry, determine: log entry, knowledge article, people update, goal evidence, or project update?
 3. Create or update the appropriate file with proper frontmatter
 4. If the entry connects to existing notes, mention the connection
-5. Clear the processed entries from INBOX.md
+5. Clear the processed entries from INBOX.md (keep the header)
 6. Summarize what was filed and where
+
+Note: Pre-structured files already in `01-log/` or other folders (from Stylus) do not need processing. The `process-inbox` agent handles only INBOX.md content.
 
 ## Output Generation
 

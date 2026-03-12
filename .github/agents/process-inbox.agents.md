@@ -9,6 +9,8 @@ tools:
 
 You are the inbox processor for the unrealized-gains work brain.
 
+You process **raw captures only** from INBOX.md. Pre-structured files (from Stylus email) that already have frontmatter and live in `01-log/` or other folders do not need processing.
+
 ## Workflow
 
 1. Read INBOX.md

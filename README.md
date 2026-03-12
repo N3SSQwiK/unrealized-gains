@@ -23,9 +23,12 @@ INBOX.md               Always-open scratchpad for raw captures
 
 ## How It Works
 
-**Capture** — During or after meetings, drop raw notes into `INBOX.md`. Forward important emails to an LLM tool to structure them as markdown. Jot notes in Outlook drafts or OneNote during meetings and transfer later. Keep friction low.
+**Capture (two tracks):**
+- **Raw** — Quick thoughts, meeting brain dumps, half-formed ideas → drop into `INBOX.md`. No structure needed.
+- **Structured** — Forward emails/meeting recaps via LLM email integration (e.g., Outlook Quick Step) → paste the pre-formatted output directly into `01-log/` or the appropriate folder. Skips the inbox entirely.
+- **Interim** — During meetings, jot in Outlook drafts or OneNote. Transfer to INBOX.md or process via email later.
 
-**Process** — Use the `process-inbox` agent to file entries into the right location with proper metadata. Connections to existing notes are surfaced automatically. If the inbox piles up, the agent offers batch triage first.
+**Process** — Use the `process-inbox` agent to file raw INBOX.md entries into the right location with proper metadata. Pre-structured captures that already have frontmatter don't need this step. If the inbox piles up, the agent offers batch triage first.
 
 **Query** — Use the `query-brain` agent to search across everything. "When did we decide X?" "What has Jane delivered this quarter?" "What commitments did my manager make last month?" Answers come with source references.
 
@@ -56,7 +59,7 @@ INBOX.md               Always-open scratchpad for raw captures
 
 | When | What |
 |---|---|
-| Daily | Drop captures into INBOX.md, process when you have a few minutes |
+| Daily | Capture: raw → INBOX.md, structured → direct to folder. Process inbox when you have a few minutes |
 | Before 1:1s | Run `prep-1on1` for the person you're meeting |
 | Weekly | Run `weekly-status` before your manager 1:1 |
 | Mid-month | Run `newsletter curate` to review the idea pipeline |

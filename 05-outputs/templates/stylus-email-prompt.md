@@ -5,7 +5,9 @@ usage: Outlook Quick Step — forward emails to Stylus LLM for structured captur
 
 # Stylus Email Capture Prompt
 
-Copy this into your Outlook Quick Step template:
+Copy this into your Outlook Quick Step template.
+
+**Important:** Stylus output is pre-structured with frontmatter. Paste it directly into the appropriate folder (usually `01-log/YYYY-MM-DD-topic-slug.md`), NOT into INBOX.md.
 
 ---
 
