@@ -18,3 +18,6 @@ title: Weekly Status Template
 
 ## Next Week
 - [Key priorities and focus areas]
+
+## Newsletter Radar
+- [AI-related topics, tools, discussions, or announcements from this week worth considering for the next edition]
