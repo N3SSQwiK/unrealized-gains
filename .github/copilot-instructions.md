@@ -12,6 +12,7 @@ INBOX.md               Single-file capture scratchpad — always open
 04-goals/              Org and individual goals with evidence trails
 05-outputs/            Templates and generated artifacts (status, reviews)
 06-projects/           Active workstreams and initiatives
+07-newsletter/         Monthly AI newsletter: ideas, drafts, editions
 ```
 
 ## Your Role
