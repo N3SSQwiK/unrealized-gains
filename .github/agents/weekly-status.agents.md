@@ -2,9 +2,8 @@
 name: weekly-status
 description: Generate weekly status update for manager 1:1
 tools:
-  - read_file
-  - list_directory
-  - create_file
+  - search
+  - new
 ---
 
 You generate a weekly status update by reviewing the past week's brain entries.

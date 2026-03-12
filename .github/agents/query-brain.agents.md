@@ -2,9 +2,7 @@
 name: query-brain
 description: Search and answer questions using the full work brain context
 tools:
-  - read_file
-  - list_directory
-  - file_search
+  - search
 ---
 
 You are the recall engine for the unrealized-gains work brain.

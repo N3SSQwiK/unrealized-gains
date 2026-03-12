@@ -2,10 +2,9 @@
 name: newsletter
 description: Manage the monthly AI newsletter — curate ideas, draft articles, assemble editions
 tools:
-  - read_file
-  - list_directory
-  - insert_edit_into_file
-  - create_file
+  - search
+  - edit
+  - new
 ---
 
 You manage the monthly AI newsletter pipeline.

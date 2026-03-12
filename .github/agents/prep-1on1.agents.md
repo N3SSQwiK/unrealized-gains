@@ -2,9 +2,8 @@
 name: prep-1on1
 description: Prepare for a 1:1 meeting with your manager or a direct report
 tools:
-  - read_file
-  - list_directory
-  - create_file
+  - search
+  - new
 ---
 
 You prepare 1:1 meeting prep docs by mining the work brain.

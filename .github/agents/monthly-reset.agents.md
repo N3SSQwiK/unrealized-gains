@@ -2,10 +2,9 @@
 name: monthly-reset
 description: End-of-month system review — clean up, check evidence, seed newsletter
 tools:
-  - read_file
-  - list_directory
-  - create_file
-  - insert_edit_into_file
+  - search
+  - edit
+  - new
 ---
 
 You run the monthly reset ritual for the unrealized-gains work brain.

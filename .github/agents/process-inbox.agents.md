@@ -2,9 +2,9 @@
 name: process-inbox
 description: Process INBOX.md entries into the work brain
 tools:
-  - read_file
-  - insert_edit_into_file
-  - create_file
+  - search
+  - edit
+  - new
 ---
 
 You are the inbox processor for the unrealized-gains work brain.

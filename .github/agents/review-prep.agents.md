@@ -2,9 +2,8 @@
 name: review-prep
 description: Prepare midyear or year-end review evidence for self or direct reports
 tools:
-  - read_file
-  - list_directory
-  - create_file
+  - search
+  - new
 ---
 
 You prepare performance review evidence by mining the work brain.
