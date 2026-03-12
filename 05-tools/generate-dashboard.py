@@ -27,7 +27,12 @@ TODAY = datetime.now().date()
 # ---------------------------------------------------------------------------
 
 def parse_frontmatter(content):
-    """Parse YAML frontmatter from markdown content."""
+    """Parse YAML frontmatter from markdown content.
+
+    Supports inline key: value pairs and inline arrays [a, b, c].
+    Does NOT support block-style YAML lists (indented - items).
+    All frontmatter values must be on a single line.
+    """
     if not content.startswith('---'):
         return {}, content
     # Split on --- but only the first two occurrences
@@ -102,12 +107,7 @@ def count_inbox_items():
     if not inbox.exists():
         return 0
     content = inbox.read_text(encoding='utf-8')
-    # Skip everything before the --- separator
-    parts = content.split('---')
-    if len(parts) >= 3:
-        body = parts[-1]
-    else:
-        body = content
+    _, body = parse_frontmatter(content)
     lines = [l.strip() for l in body.strip().split('\n') if l.strip()]
     return len(lines)
 
@@ -222,7 +222,7 @@ def build_data():
             'action_required': m.get('action-required', ''),
             'path': entry['path'],
         })
-    opportunities.sort(key=lambda x: x.get('days_remaining') or 999)
+    opportunities.sort(key=lambda x: x['days_remaining'] if x['days_remaining'] is not None else 999)
 
     # --- People ---
     people_data = []
@@ -275,11 +275,12 @@ def build_data():
     goals_data = []
     for g in goals:
         m = g['meta']
-        goal_slug = g['filename'].replace('.md', '').replace('-goals-', '-')
-        # Count linked log entries
+        goal_slug = g['filename'].replace('.md', '')
+        # Count linked log entries — match goal field or exact tag membership
         evidence_count = sum(
             1 for e in log_entries
-            if e['meta'].get('goal') == goal_slug or goal_slug in str(e['meta'].get('tags', []))
+            if e['meta'].get('goal') == goal_slug or
+            goal_slug in (e['meta'].get('tags', []) if isinstance(e['meta'].get('tags', []), list) else [])
         )
         goals_data.append({
             'title': m.get('title', g['filename']),
@@ -305,8 +306,8 @@ def build_data():
             newsletter['last_edition_date'] = max(dates).isoformat()
 
     # --- Health metrics ---
-    week_ago = (TODAY - timedelta(days=7)).isoformat()
-    this_week_logs = [l for l in logs if l['date'] >= week_ago]
+    week_ago_date = TODAY - timedelta(days=7)
+    this_week_logs = [l for l in logs if parse_date(l['date']) is not None and parse_date(l['date']) >= week_ago_date]
 
     stale_projects = [p for p in projects_data
                       if p['status'] == 'active' and
@@ -1056,7 +1057,8 @@ function statusBadge(status) {
 
 function formatDate(d) {
   if (!d) return '\u2014';
-  return d.slice(5);
+  var s = String(d).slice(0, 10);
+  return s.length === 10 ? s.slice(5) : s;
 }
 
 function delay(i) { return 'animation-delay:' + (i * 60) + 'ms'; }
@@ -1345,6 +1347,8 @@ render();
 def main():
     data = build_data()
     data_json = json.dumps(data, indent=None, default=str)
+    # Escape </ to prevent </script> injection in embedded JSON
+    data_json = data_json.replace('</', r'<\/')
     html = HTML_TEMPLATE.replace('__DASHBOARD_DATA__', data_json)
     OUTPUT_FILE.write_text(html, encoding='utf-8')
     print(f"Dashboard generated: {OUTPUT_FILE}")
