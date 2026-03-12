@@ -11,13 +11,13 @@ Realistic sample data demonstrating the full system: 10 log entries across all t
 
 ```bash
 # From repo root:
-cp 05-tools/sample-data/01-log/* 01-log/
-cp 05-tools/sample-data/03-people/*.md 03-people/
-cp 05-tools/sample-data/04-goals/* 04-goals/
-cp 05-tools/sample-data/02-knowledge/* 02-knowledge/
-cp 05-tools/sample-data/06-projects/* 06-projects/
-cp 05-tools/sample-data/07-newsletter/ideas/* 07-newsletter/ideas/
-python3 05-tools/generate-dashboard.py
+cp 08-tools/sample-data/01-log/* 01-log/
+cp 08-tools/sample-data/03-people/*.md 03-people/
+cp 08-tools/sample-data/04-goals/* 04-goals/
+cp 08-tools/sample-data/02-knowledge/* 02-knowledge/
+cp 08-tools/sample-data/06-projects/* 06-projects/
+cp 08-tools/sample-data/07-newsletter/ideas/* 07-newsletter/ideas/
+python3 08-tools/generate-dashboard.py
 ```
 
 ## Remove Sample Data

@@ -19,7 +19,7 @@ INBOX.md               Always-open scratchpad for raw captures
 03-people/             One file per direct report, yourself, and your manager
 04-goals/              Org and individual goals with evidence trails
 05-outputs/            Templates and generated artifacts
-05-tools/              Dashboard generator and sample data
+08-tools/              Dashboard generator and sample data
 06-projects/           Active workstreams and initiatives
 07-newsletter/         Content pipeline: ideas, drafts, editions
 ```
@@ -48,15 +48,15 @@ Keep `INBOX.md` open as a pinned tab in VS Code. This is your always-available c
 
 ### 6. Preview with sample data
 ```bash
-cp 05-tools/sample-data/01-log/* 01-log/
-cp 05-tools/sample-data/03-people/*.md 03-people/
-cp 05-tools/sample-data/04-goals/* 04-goals/
-cp 05-tools/sample-data/02-knowledge/* 02-knowledge/
-cp 05-tools/sample-data/06-projects/* 06-projects/
-cp 05-tools/sample-data/07-newsletter/ideas/* 07-newsletter/ideas/
-python3 05-tools/generate-dashboard.py
+cp 08-tools/sample-data/01-log/* 01-log/
+cp 08-tools/sample-data/03-people/*.md 03-people/
+cp 08-tools/sample-data/04-goals/* 04-goals/
+cp 08-tools/sample-data/02-knowledge/* 02-knowledge/
+cp 08-tools/sample-data/06-projects/* 06-projects/
+cp 08-tools/sample-data/07-newsletter/ideas/* 07-newsletter/ideas/
+python3 08-tools/generate-dashboard.py
 ```
-Open `05-tools/dashboard.html` in a browser to see the system with realistic data. Remove sample data when ready to use your own (see `05-tools/sample-data/README.md`).
+Open `08-tools/dashboard.html` in a browser to see the system with realistic data. Remove sample data when ready to use your own (see `08-tools/sample-data/README.md`).
 
 ---
 
@@ -156,9 +156,9 @@ Agents are custom Copilot Chat participants defined in `.github/agents/`. Select
 A single-file HTML dashboard generated from your data. No external dependencies.
 
 ```bash
-python3 05-tools/generate-dashboard.py
-open 05-tools/dashboard.html       # macOS
-start 05-tools/dashboard.html      # Windows
+python3 08-tools/generate-dashboard.py
+open 08-tools/dashboard.html       # macOS
+start 08-tools/dashboard.html      # Windows
 ```
 
 The dashboard shows:

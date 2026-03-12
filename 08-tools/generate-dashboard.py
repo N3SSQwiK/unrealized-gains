@@ -2,9 +2,9 @@
 """Generate a self-contained HTML dashboard for the unrealized-gains work brain.
 
 Usage:
-    python3 05-tools/generate-dashboard.py
+    python3 08-tools/generate-dashboard.py
 
-Outputs: 05-tools/dashboard.html
+Outputs: 08-tools/dashboard.html
 
 Python 3 stdlib only — no external dependencies.
 """

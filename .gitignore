@@ -7,7 +7,7 @@ Thumbs.db
 *.swp
 
 # Generated output
-05-tools/dashboard.html
+08-tools/dashboard.html
 
 # Sensitive — if you ever add anything with credentials
 *.env
