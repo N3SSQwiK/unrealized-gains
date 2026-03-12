@@ -6,5 +6,8 @@ Thumbs.db
 .vscode/
 *.swp
 
+# Generated output
+05-tools/dashboard.html
+
 # Sensitive — if you ever add anything with credentials
 *.env
