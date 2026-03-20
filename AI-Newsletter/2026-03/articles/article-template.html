@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Article Title — Controls AI Newsletter</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f4f5f7;
+    color: #1a1a2e;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* === HEADER === */
+  .header {
+    background: #0f2a5e;
+  }
+
+  .header-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .citi-logo svg { height: 66px; width: auto; }
+  .citi-logo-white svg path { fill: #fff; }
+  .citi-logo-white svg path:last-child { fill: #FF3C28; }
+
+  .back-link {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover { color: #fff; }
+
+  /* === ARTICLE HEADER === */
+  .article-header {
+    background: linear-gradient(135deg, #0f2a5e 0%, #1a47b8 50%, #255BE3 100%);
+    padding: 48px 40px 40px;
+  }
+
+  .article-header-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .article-label {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.9);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .article-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+
+  .article-meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .article-meta span { margin: 0 8px; }
+
+  /* === ARTICLE BODY === */
+  .article-body {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .article-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 48px;
+    margin-top: -20px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .article-content h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    letter-spacing: -0.2px;
+  }
+
+  .article-content h2:first-child { margin-top: 0; }
+
+  .article-content h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-top: 24px;
+    margin-bottom: 8px;
+  }
+
+  .article-content p {
+    font-size: 15px;
+    color: #4a4a5a;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .article-content ul, .article-content ol {
+    margin-bottom: 16px;
+    padding-left: 24px;
+  }
+
+  .article-content li {
+    font-size: 15px;
+    color: #4a4a5a;
+    line-height: 1.7;
+    margin-bottom: 6px;
+  }
+
+  .article-content strong { color: #1a1a2e; }
+
+  .article-content blockquote {
+    border-left: 4px solid #255BE3;
+    background: #f8fafc;
+    padding: 20px 24px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+  }
+
+  .article-content blockquote p {
+    margin-bottom: 0;
+    font-size: 15px;
+    color: #4a4a5a;
+  }
+
+  /* === STATS HIGHLIGHT === */
+  .stats-highlight {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .stat-box {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .stat-box .stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f2a5e;
+    margin-bottom: 4px;
+  }
+
+  .stat-box .stat-value.saved { color: #0a8754; }
+
+  .stat-box .stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #8a8a9a;
+  }
+
+  /* === CONVERSATION LOG === */
+  .conversation {
+    background: #1a1a2e;
+    border-radius: 10px;
+    padding: 24px;
+    margin: 24px 0;
+    font-family: 'Menlo', 'Consolas', monospace;
+  }
+
+  .conv-user, .conv-ai {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .conv-user { color: #7dd3fc; }
+  .conv-ai { color: #a5b4fc; }
+
+  .conv-label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .conv-user .conv-label { color: #38bdf8; }
+  .conv-ai .conv-label { color: #818cf8; }
+
+  /* === BACK TO NEWSLETTER === */
+  .back-bar {
+    text-align: center;
+    padding: 32px 20px 0;
+  }
+
+  .back-btn {
+    display: inline-block;
+    background: #0f2a5e;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .back-btn:hover { background: #255BE3; }
+
+  /* === FOOTER === */
+  .footer {
+    background: #0f2a5e;
+    margin-top: 40px;
+    padding: 28px 40px;
+    text-align: center;
+  }
+
+  .footer-logo svg { height: 52px; width: auto; }
+
+  .footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+    margin-top: 12px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="citi-logo citi-logo-white"><!-- REPLACE WITH YOUR COMPANY LOGO SVG --></div>
+    <a href="../index.html" class="back-link">&larr; Back to Newsletter</a>
+  </div>
+</div>
+
+<!-- ARTICLE HEADER -->
+<div class="article-header">
+  <div class="article-header-inner">
+    <span class="article-label">Deep Dive</span>
+    <h1><!-- ARTICLE TITLE HERE --></h1>
+    <div class="article-meta">March 2026 <span>&middot;</span> Author Name</div>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+  <div class="article-content">
+
+    <!-- EXAMPLE: Stats highlight block -->
+    <div class="stats-highlight">
+      <div class="stat-box">
+        <div class="stat-value">X hours</div>
+        <div class="stat-label">Manual effort</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value">X min</div>
+        <div class="stat-label">With AI</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value saved">~X hours</div>
+        <div class="stat-label">Time saved</div>
+      </div>
+    </div>
+
+    <h2><!-- SECTION HEADING --></h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+    <!-- EXAMPLE: Conversation log block -->
+    <div class="conversation">
+      <div class="conv-user">
+        <span class="conv-label">You:</span>
+        Describe your prompt here
+      </div>
+      <div class="conv-ai">
+        <span class="conv-label">AI:</span>
+        AI response here
+      </div>
+    </div>
+
+    <h2><!-- NEXT SECTION --></h2>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+    <blockquote>
+      <p>Key takeaway or pull quote goes here.</p>
+    </blockquote>
+
+  </div>
+
+  <!-- BACK TO NEWSLETTER -->
+  <div class="back-bar">
+    <a href="../index.html" class="back-btn">&larr; Back to Newsletter</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-logo citi-logo-white"><!-- REPLACE WITH YOUR COMPANY LOGO SVG --></div>
+  <p>Controls Shared Capabilities &amp; Solutions<br>AI Newsletter</p>
+</div>
+
+</body>
+</html>

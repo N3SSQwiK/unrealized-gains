@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Controls AI Newsletter — March 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f4f5f7;
+    color: #1a1a2e;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* === HEADER === */
+  .header {
+    background: #0f2a5e;
+    padding: 0;
+  }
+
+  .header-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 40px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .citi-logo svg {
+    height: 66px;
+    width: auto;
+  }
+
+  .citi-logo-white svg path {
+    fill: #fff;
+  }
+
+  .citi-logo-white svg path:last-child {
+    fill: #FF3C28;
+  }
+
+  .header-nav {
+    display: flex;
+    gap: 24px;
+  }
+
+  .header-nav a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .header-nav a:hover { color: #fff; }
+
+  /* === HERO === */
+  .hero {
+    background: linear-gradient(135deg, #0f2a5e 0%, #1a47b8 50%, #255BE3 100%);
+    padding: 64px 40px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-content {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-label {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.9);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-subtitle {
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    max-width: 520px;
+    margin: 0 auto 8px;
+    line-height: 1.5;
+  }
+
+  .hero-meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 20px;
+  }
+
+  .hero-meta span { margin: 0 8px; }
+
+  /* === MAIN CONTENT === */
+  .content {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* === IN THIS ISSUE === */
+  .toc {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px 40px;
+    margin-top: -32px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .toc h2 {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #0f2a5e;
+    margin-bottom: 16px;
+  }
+
+  .toc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .toc-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .toc-number {
+    font-size: 12px;
+    font-weight: 700;
+    color: #255BE3;
+    min-width: 20px;
+  }
+
+  .toc-list a {
+    color: #1a1a2e;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .toc-list a:hover { color: #255BE3; }
+
+  /* === SECTION CARDS === */
+  .section-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px;
+    margin-top: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #255BE3;
+    background: #e8eefb;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+
+  .section-card h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a1a2e;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+
+  .section-card .lead {
+    font-size: 16px;
+    color: #4a4a5a;
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+
+  /* === USE CASES === */
+  .use-cases {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .use-case {
+    border: 1px solid #e8ecf1;
+    border-radius: 10px;
+    padding: 24px 28px;
+    transition: border-color 0.2s;
+  }
+
+  .use-case:hover { border-color: #255BE3; }
+
+  .use-case-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .use-case h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a2e;
+  }
+
+  .use-case-number {
+    font-size: 12px;
+    font-weight: 700;
+    color: #255BE3;
+    background: #e8eefb;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .use-case p {
+    font-size: 14px;
+    color: #5a5a6a;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+
+  .use-case-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #f0f2f5;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #8a8a9a;
+  }
+
+  .stat-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a2e;
+  }
+
+  .stat-value.saved {
+    color: #0a8754;
+  }
+
+  /* === BOTTOM LINE === */
+  .bottom-line {
+    background: #f8fafc;
+    border-left: 4px solid #255BE3;
+    border-radius: 0 10px 10px 0;
+    padding: 28px 32px;
+    margin-top: 28px;
+  }
+
+  .bottom-line h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f2a5e;
+    margin-bottom: 10px;
+  }
+
+  .bottom-line p {
+    font-size: 15px;
+    color: #4a4a5a;
+    line-height: 1.65;
+  }
+
+  .bottom-line .highlight {
+    font-weight: 600;
+    color: #1a1a2e;
+  }
+
+  /* === PATTERN BOX === */
+  .pattern-box {
+    background: #0f2a5e;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-top: 24px;
+    color: #fff;
+  }
+
+  .pattern-box h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: #fff;
+  }
+
+  .pattern-steps {
+    list-style: none;
+    counter-reset: steps;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pattern-steps li {
+    counter-increment: steps;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .pattern-steps li::before {
+    content: counter(steps);
+    font-size: 11px;
+    font-weight: 700;
+    color: #0f2a5e;
+    background: #fff;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .pattern-steps strong { color: #fff; }
+
+  /* === DEEP DIVE LINKS === */
+  .deep-dives {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .deep-dive-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    background: #fff;
+    border: 1px solid #e8ecf1;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #1a1a2e;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .deep-dive-link:hover {
+    border-color: #255BE3;
+    background: #f8fafc;
+  }
+
+  .deep-dive-link .arrow {
+    margin-left: auto;
+    color: #255BE3;
+    font-size: 16px;
+  }
+
+  /* === SIGNAL FROM THE NOISE === */
+  .signal-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px;
+    margin-top: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .signal-article {
+    border: 1px solid #e8ecf1;
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-top: 20px;
+  }
+
+  .signal-source {
+    font-size: 12px;
+    font-weight: 600;
+    color: #8a8a9a;
+    letter-spacing: 0.3px;
+    margin-bottom: 6px;
+  }
+
+  .signal-article h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+
+  .signal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .signal-meta-item {
+    font-size: 13px;
+    color: #5a5a6a;
+  }
+
+  .signal-meta-item strong {
+    color: #1a1a2e;
+    font-weight: 600;
+  }
+
+  .signal-takeaway {
+    font-size: 14px;
+    color: #4a4a5a;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #255BE3;
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+
+  .read-more:hover { gap: 10px; }
+
+  /* === ETHICS LINK === */
+  .ethics-bar {
+    text-align: center;
+    padding: 20px;
+    margin-top: 24px;
+  }
+
+  .ethics-bar a {
+    font-size: 13px;
+    font-weight: 500;
+    color: #255BE3;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .ethics-bar a:hover { border-color: #255BE3; }
+
+  /* === FEEDBACK CTA === */
+  .feedback {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px;
+    margin-top: 24px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .feedback-icon {
+    width: 48px;
+    height: 48px;
+    background: #e8eefb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 20px;
+  }
+
+  .feedback h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+  }
+
+  .feedback p {
+    font-size: 14px;
+    color: #5a5a6a;
+    margin-bottom: 20px;
+  }
+
+  .feedback-btn {
+    display: inline-block;
+    background: #0f2a5e;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .feedback-btn:hover { background: #255BE3; }
+
+  .feedback-note {
+    font-size: 12px;
+    color: #8a8a9a;
+    margin-top: 12px;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    background: #0f2a5e;
+    margin-top: 40px;
+    padding: 32px 40px;
+    text-align: center;
+  }
+
+  .footer-logo svg {
+    height: 52px;
+    width: auto;
+  }
+
+  .footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+  }
+
+  .footer-divider {
+    width: 40px;
+    height: 1px;
+    background: rgba(255,255,255,0.15);
+    margin: 16px auto;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="citi-logo citi-logo-white"><!-- REPLACE WITH YOUR COMPANY LOGO SVG --></div>
+    <nav class="header-nav">
+      <a href="#">Archive</a>
+      <a href="#">AI/ML Ethics</a>
+      <a href="#">Feedback</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Controls &middot; Shared Capabilities &amp; Solutions</div>
+    <h1>Lorem Ipsum Dolor Sit<br>Amet Consectetur</h1>
+    <p class="hero-subtitle">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+    <div class="hero-meta">March 2026 <span>&middot;</span> Author Name</div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content">
+
+  <!-- IN THIS ISSUE -->
+  <div class="toc">
+    <h2>In This Issue</h2>
+    <ol class="toc-list">
+      <li><span class="toc-number">01</span> <a href="#use-cases">Pellentesque Habitant Morbi Tristique Senectus</a></li>
+      <li><span class="toc-number">02</span> <a href="#bottom-line">The Bottom Line</a></li>
+      <li><span class="toc-number">03</span> <a href="#signal">Signal from the Noise — Industry Trends</a></li>
+    </ol>
+  </div>
+
+  <!-- FEATURE ARTICLE -->
+  <div class="section-card" id="use-cases">
+    <span class="section-label">Feature</span>
+    <h2>Pellentesque Habitant Morbi Tristique Senectus</h2>
+    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+
+    <div class="use-cases">
+
+      <div class="use-case">
+        <div class="use-case-header">
+          <h3>Use Case Alpha</h3>
+          <span class="use-case-number">1</span>
+        </div>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <div class="use-case-stats">
+          <div class="stat">
+            <span class="stat-label">Manual effort</span>
+            <span class="stat-value">3–4 hours</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">With AI</span>
+            <span class="stat-value">10 min, 5 requests</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Time saved</span>
+            <span class="stat-value saved">~3.5 hours</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="use-case">
+        <div class="use-case-header">
+          <h3>Use Case Bravo</h3>
+          <span class="use-case-number">2</span>
+        </div>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="use-case-stats">
+          <div class="stat">
+            <span class="stat-label">Manual effort</span>
+            <span class="stat-value">1.5–2 hours</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">With AI</span>
+            <span class="stat-value">5–10 min, 3 requests</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Time saved</span>
+            <span class="stat-value saved">~1.5 hours</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="use-case">
+        <div class="use-case-header">
+          <h3>Use Case Charlie</h3>
+          <span class="use-case-number">3</span>
+        </div>
+        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.</p>
+        <div class="use-case-stats">
+          <div class="stat">
+            <span class="stat-label">Manual effort</span>
+            <span class="stat-value">1–1.5 hours</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">With AI</span>
+            <span class="stat-value">2–3 min, 2 requests</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Time saved</span>
+            <span class="stat-value saved">~1 hour</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="use-case">
+        <div class="use-case-header">
+          <h3>Use Case Delta</h3>
+          <span class="use-case-number">4</span>
+        </div>
+        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+        <div class="use-case-stats">
+          <div class="stat">
+            <span class="stat-label">Manual effort</span>
+            <span class="stat-value">1–1.5 hours</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">With AI</span>
+            <span class="stat-value">10 min, 8 requests</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Time saved</span>
+            <span class="stat-value saved">~1.25 hours</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- THE PATTERN -->
+    <div class="pattern-box">
+      <h3>The Pattern</h3>
+      <ol class="pattern-steps">
+        <li><strong>Describe what you need</strong> in plain English</li>
+        <li><strong>Refine once or twice</strong> as the AI asks clarifying questions</li>
+        <li><strong>Receive production-ready output</strong> with documentation baked in</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM LINE -->
+  <div class="section-card" id="bottom-line">
+    <div class="bottom-line">
+      <h3>The Bottom Line</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi <span class="highlight">architecto beatae vitae dicta sunt explicabo</span>.</p>
+      <p style="margin-top: 12px;">Total AI effort: ~30 minutes of conversation.<br>
+      <strong style="color: #0a8754;">Time saved: 6.5–8.5 hours.</strong></p>
+    </div>
+  </div>
+
+  <!-- DEEP DIVE LINKS -->
+  <div class="deep-dives">
+    <a href="#" class="deep-dive-link">
+      Use Case Alpha
+      <span class="arrow">&rarr;</span>
+    </a>
+    <a href="#" class="deep-dive-link">
+      Use Case Bravo
+      <span class="arrow">&rarr;</span>
+    </a>
+    <a href="#" class="deep-dive-link">
+      Use Case Charlie
+      <span class="arrow">&rarr;</span>
+    </a>
+    <a href="#" class="deep-dive-link">
+      Use Case Delta
+      <span class="arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <!-- SIGNAL FROM THE NOISE -->
+  <div class="signal-card" id="signal">
+    <span class="section-label">Signal from the Noise</span>
+    <div class="signal-article">
+      <div class="signal-source">Research Firm &middot; March 1, 2026</div>
+      <h3>Perspiciatis Unde Omnis Iste Natus Error Sit</h3>
+      <div class="signal-meta">
+        <span class="signal-meta-item"><strong>AI Trend:</strong> Lorem ipsum dolor</span>
+        <span class="signal-meta-item"><strong>Relevant To:</strong> Financial Services</span>
+      </div>
+      <p class="signal-takeaway">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+      <a href="#" class="read-more">Read the full article &rarr;</a>
+    </div>
+  </div>
+
+  <!-- ETHICS -->
+  <div class="ethics-bar">
+    <a href="#">AI/ML Ethical Principles &rarr;</a>
+  </div>
+
+  <!-- FEEDBACK CTA -->
+  <div class="feedback">
+    <div class="feedback-icon">&#128172;</div>
+    <h2>We Want to Hear from You</h2>
+    <p>Did these use cases resonate? What AI challenges are you facing?<br>Share your feedback and help us deliver content that truly helps.</p>
+    <a href="#" class="feedback-btn">Share Your Feedback</a>
+    <p class="feedback-note">Takes less than 2 minutes &middot; Your input shapes future content</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-logo citi-logo-white"><!-- REPLACE WITH YOUR COMPANY LOGO SVG --></div>
+  <div class="footer-divider"></div>
+  <p>Controls Shared Capabilities &amp; Solutions<br>AI Newsletter &middot; March 2026</p>
+</div>
+
+</body>
+</html>
